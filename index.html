@@ -2,19 +2,46 @@
 <html>
   <body>
     <div id="root"></div>
+    
   </body>
   <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
   <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
-  <script>
-    // react js element 방식
-    // 개발자들이 작업하는 방법은 아님
-    // 그러나 본질을 이해하게 위해..
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+
     const root = document.getElementById("root");
-    const span = React.createElement(
-      "span",
-      { id: "cute-span", style: { color: "red" } },
-      "hello its span"
+
+    // return 방식
+    function Title(){ 
+        return (
+            <h3 id="title" onMouseEnter={() => console.log("mouse enter")}>
+                Hello jsx title
+            </h3>
+        );
+    }
+
+    // arrow 방식 (선호도 높음)
+    const Btn = () => (
+        <button
+            style={{
+                backgroundColor: "tomato",
+            }}
+            onClick={() => console.log("im clicked")}
+        >
+            jsx button
+        </button>
     );
-    ReactDOM.render(span, root); // root 안에 span을 render 해주세요
+
+    // 컴포넌트 형태로 집어넣자
+    // 컴포넌트는 html 태그와 이름이 같으면 안된다!
+    // 컴포넌트의 이름은 무조건 대문자로 시작한다!
+    // 컴포넌트 안에 컴포넌트 넣기
+    const Container = () => ( // 함수 형태로 만들어준다는 걸 잊지말자!
+        <div>
+            <Title />  
+            <Btn />
+        </div>
+    );
+    ReactDOM.render(<Container />, root);
   </script>
 </html>
