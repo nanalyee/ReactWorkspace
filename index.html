@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script>
+    // react js element 방식
+    // 개발자들이 작업하는 방법은 아님
+    // 그러나 본질을 이해하게 위해..
+    const root = document.getElementById("root");
+    const span = React.createElement(
+      "span",
+      { id: "cute-span", style: { color: "red" } },
+      "hello its span"
+    );
+    ReactDOM.render(span, root); // root 안에 span을 render 해주세요
+  </script>
+</html>

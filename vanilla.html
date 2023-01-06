@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <span>Total clicks: 0</span>
+    <button id="btn">click me</button>
+  </body>
+  <script>
+    // 바닐라자스 방식
+    // 1. html 생성
+    // 2. js에서 가져와
+    // 3. event 감지
+    // 4. 데이터 업데이트
+    // 5. html 업데이트
+    let counter = 0;
+    const button = document.getElementById("btn");
+    const span = document.querySelector("span");
+    function handleClick() {
+      counter = counter + 1;
+      span.innerText = `Total clicks: ${counter}`;
+    }
+    button.addEventListener("click", handleClick);
+  </script>
+</html>
