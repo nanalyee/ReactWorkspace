@@ -2,46 +2,28 @@
 <html>
   <body>
     <div id="root"></div>
-    
   </body>
   <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
   <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
-
     const root = document.getElementById("root");
-
-    // return 방식
-    function Title(){ 
-        return (
-            <h3 id="title" onMouseEnter={() => console.log("mouse enter")}>
-                Hello jsx title
-            </h3>
-        );
-    }
-
-    // arrow 방식 (선호도 높음)
-    const Btn = () => (
-        <button
-            style={{
-                backgroundColor: "tomato",
-            }}
-            onClick={() => console.log("im clicked")}
-        >
-            jsx button
-        </button>
-    );
-
-    // 컴포넌트 형태로 집어넣자
-    // 컴포넌트는 html 태그와 이름이 같으면 안된다!
-    // 컴포넌트의 이름은 무조건 대문자로 시작한다!
-    // 컴포넌트 안에 컴포넌트 넣기
-    const Container = () => ( // 함수 형태로 만들어준다는 걸 잊지말자!
+    function App() {
+      const [counter, setCounter] = React.useState(0);
+      const onClick = () => {
+        // 현재의 counter로 계산중인데, 다른 방법은?
+        // setCounter(counter + 1); // 1. 직접 넣기
+        setCounter((current) => current + 1); // 2. 함수로 전달하기
+        // 이게 더 안전! 위와 값은 같음
+        // current가 현재 값이라는 것을 확실히 보장
+      };
+      return (
         <div>
-            <Title />  
-            <Btn />
+          <h3>Hello im title : {counter}</h3>
+          <button onClick={onClick}>click!!</button>
         </div>
-    );
-    ReactDOM.render(<Container />, root);
+      );
+    }
+    ReactDOM.render(<App />, root);
   </script>
 </html>
