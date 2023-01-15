@@ -1,0 +1,87 @@
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "helvetica";
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  perspective: 1000px;
+}
+
+.container > p {
+  width: 100%;
+  margin: 0 35px;
+}
+
+.card {
+  /* 이부분 조정함 */
+  /* width: 100%; */
+  width: 350px;
+  height: 350px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+.card-block {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 35px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  /* 이부분 조정함 */
+  flex-direction: column;
+}
+
+.card-block .text {
+  margin: 0 35px;
+}
+
+.card-front {
+  background: #ccc;
+}
+
+.card-back {
+  background: #333;
+  color: #fff;
+  transform: rotateY(180deg);
+}
+
+.card.flipped {
+  transform: rotateY(180deg);
+}
+
+/* .card:hover {
+    transform: rotateY(180deg);
+} */
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    margin: 15px;
+  }
+
+  .container > p {
+    margin-top: 25px;
+  }
+  .card-block {
+    flex-direction: column;
+    text-align: center;
+    font-size: 0.9em;
+  }
+  .card-block .text {
+    margin: 0;
+  }
+}
